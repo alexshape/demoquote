@@ -1,0 +1,117 @@
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+}
+
+img{
+    height: 20%;
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+
+.editinput {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: darkseagreen;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.editinput:hover{
+    background-color: mediumaquamarine;
+}
+
+.logoutinput {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+.logoutinput:hover{
+    background-color: grey;
+}
+
+
+
+button:hover, a:hover {
+    opacity: 0.7;
+}
+
+a.knopka {
+    color: #fff; /* цвет текста */
+    text-decoration: none; /* убирать подчёркивание у ссылок */
+    user-select: none; /* убирать выделение текста */
+    background: rgb(212,75,56); /* фон кнопки */
+    padding: .7em 1.5em; /* отступ от текста */
+    outline: none; /* убирать контур в Mozilla */
+}
+a.knopka:hover { background: rgb(232,95,76); } /* при наведении курсора мышки */
+a.knopka:active { background: rgb(152,15,0); } /* при нажатии */
+
+.list1a {
+    margin: 20px 0 0;
+    padding:0;
+    list-style: none;
+    counter-reset: li;
+}
+.list1a li {
+    border: 2px solid;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 16px 10px;
+}
+.list1a li:hover {
+    z-index: 1;
+}
+.list1a li:before {
+    border: 2px solid;
+    position: absolute;
+    top: -14px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: bold;
+    background: #F7FAFD;
+    counter-increment: li;
+    content: counter(li);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.list1a li:after {
+    content: "";
+    position: absolute;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    -webkit-transition-property: width;
+    transition-property: width;
+    z-index: -1;
+    background: #FFF;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 0;
+}
+.list1a li:hover:after {
+    width: 100%;
+}
+
