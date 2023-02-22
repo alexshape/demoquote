@@ -51,8 +51,8 @@ public class Image{
         this.owner = owner;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private ImageOwner owner;
 

@@ -9,7 +9,7 @@ import java.util.List;
 @DiscriminatorValue("ImageOwnerList")
 public class ImageOwnerList extends ImageOwner {
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Image> images;
 
     public ImageOwnerList() {

@@ -1,11 +1,5 @@
 <aside>
 
-     <#if .now>
-         efdsf
-     <#else>
-         fdgdfgfdgdfgdfg
-     </#if>
-
     <#if user??>
         <#assign email = user.email>
     <#else>

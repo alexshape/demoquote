@@ -121,6 +121,15 @@ public class QuoteService {
 
     }
 
+    public List<Quote> getTop10QuotesByScore(String type) {
+
+        if("top10".equals(type))
+            return quotesRepository.fiindFirstTop10();
+        else
+            return quotesRepository.fiindFirstFlop10();
+
+    }
+
     public List<Quote> getAllQuote() {
         return quotesRepository.findAll();
     }

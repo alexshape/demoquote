@@ -17,6 +17,10 @@ public interface QuotesRepository extends JpaRepository<Quote, Long> {
     @Query(value = "SELECT * FROM QUOTES ORDER BY RAND() LIMIT 1", nativeQuery = true)
     Quote findRandomQoute();
 
+    @Query(value = "SELECT * FROM QUOTES ORDER BY SCORE DESC LIMIT 10", nativeQuery = true)
+    List<Quote> fiindFirstTop10();
 
+    @Query(value = "SELECT * FROM QUOTES ORDER BY SCORE LIMIT 10", nativeQuery = true)
+    List<Quote> fiindFirstFlop10();
 
 }

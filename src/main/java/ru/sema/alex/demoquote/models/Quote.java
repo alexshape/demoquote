@@ -19,7 +19,7 @@ public class Quote{
         return imageOwner;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JoinColumn(name="imageOwner", referencedColumnName = "id")
     private ImageOwnerList imageOwner = new ImageOwnerList();
 

@@ -12,6 +12,7 @@ import ru.sema.alex.demoquote.servises.ScoreService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/quote")
@@ -27,11 +28,15 @@ public class QuoteController {
     }
 
     @GetMapping("/{id}")
-    public String quoteInfo(@PathVariable Long id, Model model){
+    public String quoteInfo(Principal principal, @PathVariable Long id, Model model){
 
         Quote quote = quoteService.getQuote(id);
 
         if(quote != null){
+
+            if(principal != null && principal.getName().equals(quote.getAuthor().getUsername()))
+                model.addAttribute("canDelete", true);
+
             model.addAttribute("quote", quote);
             model.addAttribute("author", quote.getAuthor());
             model.addAttribute("hasMainImgage", quote.getImageOwner().hasMainImgage());
@@ -79,8 +84,10 @@ public class QuoteController {
         model.addAttribute("randomQoute", randomQoute);
         model.addAttribute("showRandomQuote", randomQoute != null);
 
-        if(quoteService.getAllQuote().size() > 0)
-            model.addAttribute("allQuotes", quoteService.getAllQuote());
+        List<Quote> quoteList = quoteService.getTop10QuotesByScore(top);
+
+        if(quoteList.size() > 0)
+            model.addAttribute("allQuotes", quoteList);
 
         return "quotes/top10flop10quotes";
     }

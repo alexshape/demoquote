@@ -26,10 +26,13 @@
 <#--          <form action="/quote/new" method="GET">
               <input type="submit" value="Create new">
           </form>-->
+        <#if canDelete?? && canDelete>
+                 <form action="/quote/${quote.id}/delete" method="post">
+                    <input type="submit" value="Delete">
+                    </form>
+        </#if>
 
-<#--          <form action="/quote/${quote.id}/delete" method="post">
-              <input type="submit" value="Delete">
-          </form>-->
+
       </article>
 
     <#include '../fragments/aside.ftlh'>
