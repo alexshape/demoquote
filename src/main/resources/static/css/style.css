@@ -82,11 +82,11 @@ nav li {
   display: inline;
   text-align: center;
   flex: 1;
-  
+
 }
 
 ul a:hover {
-color: #FFBF40;
+  color: #FFBF40;
 }
 
 
@@ -99,12 +99,12 @@ nav a {
 }
 
 .createAcc {
-	font-size: 1.5rem;
-	margin-top: 5%;
+  font-size: 1.5rem;
+  margin-top: 5%;
 
 }
 .currentQuote{
-	
+
 }
 
 .quote-input-textarea{
@@ -134,11 +134,11 @@ nav form {
 
 
 label{
-font-size: 1.2rem;
+  font-size: 1.2rem;
 }
 
 signinFrom{
-	margin: 0.5em;
+  margin: 0.5em;
 }
 main {
   display: flex;

@@ -37,7 +37,7 @@ public class ScoreService {
 
         scoreRepository.save(score);
 
-        score.getQuote().getScores().add(score);
+        //score.getQuote().getScores().add(score);
         quoteService.saveQuote(score.getQuote());
     }
 

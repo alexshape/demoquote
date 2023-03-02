@@ -1,5 +1,6 @@
 package ru.sema.alex.demoquote.models;
 
+import com.sun.istack.Nullable;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
@@ -42,8 +43,7 @@ public class User implements UserDetails {
         return quotes;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private List<Quote> quotes;
 
     private String name;
@@ -70,6 +70,7 @@ public class User implements UserDetails {
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="imageOwner")
+    @Nullable
     private ImageOwner imageOwner = new ImageOwnerSingle();
 
     @PrePersist

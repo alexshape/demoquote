@@ -48,8 +48,8 @@ public class Score {
 
     private ScoreType type;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "quote", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "quote", referencedColumnName = "id")
     private Quote quote;
 
     @Column(name = "date")

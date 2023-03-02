@@ -1,5 +1,6 @@
 package ru.sema.alex.demoquote.models;
 
+import com.sun.istack.Nullable;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import ru.sema.alex.demoquote.models.imagemodels.Image;
@@ -19,8 +20,9 @@ public class Quote{
         return imageOwner;
     }
 
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="imageOwner", referencedColumnName = "id")
+    @Nullable
     private ImageOwnerList imageOwner = new ImageOwnerList();
 
     @Id
@@ -37,8 +39,8 @@ public class Quote{
     private String data;
     private Date creationDate;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "author", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "author", referencedColumnName = "id")
     private User author;
 
     public Integer getScore() {
@@ -61,8 +63,7 @@ public class Quote{
         this.scores = scores;
     }
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @LazyCollection(LazyCollectionOption.FALSE)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "quote")
     private List<Score> scores = new ArrayList<>();
 
     public Image getMainPhoto() {
