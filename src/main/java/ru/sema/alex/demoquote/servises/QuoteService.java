@@ -55,10 +55,23 @@ public class QuoteService {
 
     public void saveQuote(Quote quote, MultipartFile firstPhoto, MultipartFile secondPhoto){
 
-        Image.saveImageToImageOwner(imageRepository, quote.getImageOwner(), Image.getImageFromMultipartFile(firstPhoto));
-        Image.saveImageToImageOwner(imageRepository, quote.getImageOwner(), Image.getImageFromMultipartFile(secondPhoto));
-
         saveQuote(quote);
+
+        Image image1 = Image.getImageFromMultipartFile(firstPhoto);
+        Image image2 = Image.getImageFromMultipartFile(secondPhoto);
+
+        Image.saveImageToImageOwner(imageRepository, quote.getImageOwner(), image1);
+        Image.saveImageToImageOwner(imageRepository, quote.getImageOwner(), image2);
+
+        //defult last image
+        if(image2 != null )
+            quote.getImageOwner().setMainImage(image2);
+        else
+            if(image1!=null)
+                quote.getImageOwner().setMainImage(image1);
+
+        quotesRepository.save(quote);
+
     }
 
     public void saveQuote(Quote quote){

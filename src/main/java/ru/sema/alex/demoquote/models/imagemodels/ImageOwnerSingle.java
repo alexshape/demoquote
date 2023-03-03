@@ -22,13 +22,12 @@ public class ImageOwnerSingle extends ImageOwner{
         this.image = image;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id", referencedColumnName = "owner_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "id", referencedColumnName = "owner_id")
     private Image image;
 
     @Override
     public void attachImage(Image image) {
         this.image = image;
-        setMainImage(this.image);
     }
 }

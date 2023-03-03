@@ -37,7 +37,11 @@ public class UserService implements UserDetailsService{
 
     public void saveUser(User user, MultipartFile photo){
 
-        Image.saveImageToImageOwner(imageRepository, user.getImageOwner(), Image.getImageFromMultipartFile(photo));
+        Image image = Image.getImageFromMultipartFile(photo);
+        if(image != null){
+            Image.saveImageToImageOwner(imageRepository, user.getImageOwner(), image);
+            user.getImageOwner().setMainImage(image);
+        }
         saveUser(user);
     }
 

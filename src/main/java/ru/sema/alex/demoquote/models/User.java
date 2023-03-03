@@ -68,9 +68,9 @@ public class User implements UserDetails {
         return imageOwner;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="imageOwner")
-    @Nullable
+    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name="imageOwner")
+    //@Nullable
     private ImageOwner imageOwner = new ImageOwnerSingle();
 
     @PrePersist

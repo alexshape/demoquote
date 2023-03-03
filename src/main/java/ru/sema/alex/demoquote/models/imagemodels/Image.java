@@ -49,11 +49,11 @@ public class Image{
 
     public void setOwner(ImageOwner owner) {
         this.owner = owner;
+        owner.attachImage(this);
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private ImageOwner owner;
 
     public Long getId() {
@@ -129,9 +129,8 @@ public class Image{
     public static void saveImageToImageOwner(JpaRepository imageRepository, ImageOwner imageOwner, Image image){
 
         if(image != null) {
-            imageRepository.save(image);
             image.setOwner(imageOwner);
-            imageOwner.attachImage(image);
+            imageRepository.save(image);
         }
     };
 

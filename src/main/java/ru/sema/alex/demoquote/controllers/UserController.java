@@ -122,6 +122,12 @@ public class UserController {
             return new RedirectView("/users/profile/");
         }catch (AuthenticationException ex){
             setMistake(attributes, "We can not allow to enter");
+
+            User user = new User();
+            user.setEmail(username);
+
+            attributes.addFlashAttribute("user", user);
+
             return new RedirectView(request.getHeader("referer"));
         }catch (Exception ex){
             return new RedirectView(request.getHeader("referer"));
